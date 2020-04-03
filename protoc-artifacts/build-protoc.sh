@@ -185,7 +185,7 @@ fi
 # Override the default value set in configure.ac that has '-g' which produces
 # huge binary.
 
-CXXFLAGS="-DNDEBUG"
+CXXFLAGS="-DNDEBUG -std=c++11"
 LDFLAGS=""
 
 #OSX may need these flags
