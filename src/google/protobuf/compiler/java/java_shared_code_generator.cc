@@ -88,7 +88,7 @@ void SharedCodeGenerator::Generate(
     PrintGeneratedAnnotation(printer.get(), '$',
                              options_.annotate_code ? info_relative_path : "");
     printer->Print(
-        "public final class $classname$ {\n"
+        "public class $classname$ {\n"
         "  public static com.google.protobuf.Descriptors.FileDescriptor\n"
         "      descriptor;\n"
         "  static {\n",

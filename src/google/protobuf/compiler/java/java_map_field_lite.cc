@@ -254,8 +254,8 @@ void ImmutableMapFieldLiteGenerator::GenerateMembers(
     io::Printer* printer) const {
   printer->Print(
       variables_,
-      "private static final class $capitalized_name$DefaultEntryHolder {\n"
-      "  static final com.google.protobuf.MapEntryLite<\n"
+      "private static class $capitalized_name$DefaultEntryHolder {\n"
+      "  static com.google.protobuf.MapEntryLite<\n"
       "      $type_parameters$> defaultEntry =\n"
       "          com.google.protobuf.MapEntryLite\n"
       "          .<$type_parameters$>newDefaultInstance(\n"

@@ -114,7 +114,7 @@ void EnumLiteGenerator::Generate(io::Printer* printer) {
     vars["canonical_name"] = aliases_[i].canonical_value->name();
     WriteEnumValueDocComment(printer, aliases_[i].value);
     printer->Print(
-        vars, "public static final $classname$ $name$ = $canonical_name$;\n");
+        vars, "public static $classname$ $name$ = $canonical_name$;\n");
     printer->Annotate("name", aliases_[i].value);
   }
 
@@ -195,7 +195,7 @@ void EnumLiteGenerator::Generate(io::Printer* printer) {
       "  return $classname$Verifier.INSTANCE;\n"
       "}\n"
       "\n"
-      "private static final class $classname$Verifier implements \n"
+      "private static class $classname$Verifier implements \n"
       "     com.google.protobuf.Internal.EnumVerifier { \n"
       "        static final com.google.protobuf.Internal.EnumVerifier "
       "          INSTANCE = new $classname$Verifier();\n"

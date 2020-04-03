@@ -132,7 +132,7 @@ void EnumGenerator::Generate(io::Printer* printer) {
     vars["canonical_name"] = aliases_[i].canonical_value->name();
     WriteEnumValueDocComment(printer, aliases_[i].value);
     printer->Print(
-        vars, "public static final $classname$ $name$ = $canonical_name$;\n");
+        vars, "public static $classname$ $name$ = $canonical_name$;\n");
     printer->Annotate("name", aliases_[i].value);
   }
 
@@ -144,7 +144,7 @@ void EnumGenerator::Generate(io::Printer* printer) {
     vars["}"] = "";
     WriteEnumValueDocComment(printer, descriptor_->value(i));
     printer->Print(vars,
-                   "public static final int ${$$name$_VALUE$}$ = $number$;\n");
+                   "public static int ${$$name$_VALUE$}$ = $number$;\n");
     printer->Annotate("{", "}", descriptor_->value(i));
   }
   printer->Print("\n");
@@ -153,7 +153,7 @@ void EnumGenerator::Generate(io::Printer* printer) {
 
   printer->Print(
       "\n"
-      "public final int getNumber() {\n");
+      "public int getNumber() {\n");
   if (SupportUnknownEnumValue(descriptor_->file())) {
     if (ordinal_is_index) {
       printer->Print(
@@ -212,7 +212,7 @@ void EnumGenerator::Generate(io::Printer* printer) {
       "    internalGetValueMap() {\n"
       "  return internalValueMap;\n"
       "}\n"
-      "private static final com.google.protobuf.Internal.EnumLiteMap<\n"
+      "private static com.google.protobuf.Internal.EnumLiteMap<\n"
       "    $classname$> internalValueMap =\n"
       "      new com.google.protobuf.Internal.EnumLiteMap<$classname$>() {\n"
       "        public $classname$ findValueByNumber(int number) {\n"
@@ -227,15 +227,15 @@ void EnumGenerator::Generate(io::Printer* printer) {
 
   if (HasDescriptorMethods(descriptor_, context_->EnforceLite())) {
     printer->Print(
-        "public final com.google.protobuf.Descriptors.EnumValueDescriptor\n"
+        "public com.google.protobuf.Descriptors.EnumValueDescriptor\n"
         "    getValueDescriptor() {\n"
         "  return getDescriptor().getValues().get($index_text$);\n"
         "}\n"
-        "public final com.google.protobuf.Descriptors.EnumDescriptor\n"
+        "public com.google.protobuf.Descriptors.EnumDescriptor\n"
         "    getDescriptorForType() {\n"
         "  return getDescriptor();\n"
         "}\n"
-        "public static final com.google.protobuf.Descriptors.EnumDescriptor\n"
+        "public static com.google.protobuf.Descriptors.EnumDescriptor\n"
         "    getDescriptor() {\n",
         "index_text", index_text);
 
@@ -269,7 +269,7 @@ void EnumGenerator::Generate(io::Printer* printer) {
     printer->Print(
         "}\n"
         "\n"
-        "private static final $classname$[] VALUES = ",
+        "private static $classname$[] VALUES = ",
         "classname", descriptor_->name());
 
     if (CanUseEnumValues()) {

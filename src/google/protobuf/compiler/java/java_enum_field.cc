@@ -635,7 +635,7 @@ void RepeatedImmutableEnumFieldGenerator::GenerateMembers(
   printer->Print(
       variables_,
       "private java.util.List<java.lang.Integer> $name$_;\n"
-      "private static final "
+      "private static "
       "com.google.protobuf.Internal.ListAdapter.Converter<\n"
       "    java.lang.Integer, $type$> $name$_converter_ =\n"
       "        new com.google.protobuf.Internal.ListAdapter.Converter<\n"

@@ -112,7 +112,7 @@ void ImmutableServiceGenerator::Generate(io::Printer* printer) {
 void ImmutableServiceGenerator::GenerateGetDescriptorForType(
     io::Printer* printer) {
   printer->Print(
-      "public final com.google.protobuf.Descriptors.ServiceDescriptor\n"
+      "public com.google.protobuf.Descriptors.ServiceDescriptor\n"
       "    getDescriptorForType() {\n"
       "  return getDescriptor();\n"
       "}\n");
@@ -239,7 +239,7 @@ void ImmutableServiceGenerator::GenerateCallBlockingMethod(
     io::Printer* printer) {
   printer->Print(
       "\n"
-      "public final com.google.protobuf.Message callBlockingMethod(\n"
+      "public com.google.protobuf.Message callBlockingMethod(\n"
       "    com.google.protobuf.Descriptors.MethodDescriptor method,\n"
       "    com.google.protobuf.RpcController controller,\n"
       "    com.google.protobuf.Message request)\n"
@@ -285,7 +285,7 @@ void ImmutableServiceGenerator::GenerateGetPrototype(RequestOrResponse which,
    * "BlockingService.foo."  Consider fixing.
    */
   printer->Print(
-      "public final com.google.protobuf.Message\n"
+      "public com.google.protobuf.Message\n"
       "    get$request_or_response$Prototype(\n"
       "    com.google.protobuf.Descriptors.MethodDescriptor method) {\n"
       "  if (method.getService() != getDescriptor()) {\n"
@@ -331,7 +331,7 @@ void ImmutableServiceGenerator::GenerateStub(io::Printer* printer) {
       "  return new Stub(channel);\n"
       "}\n"
       "\n"
-      "public static final class Stub extends $classname$ implements Interface "
+      "public static class Stub extends $classname$ implements Interface "
       "{"
       "\n",
       "classname", name_resolver_->GetImmutableClassName(descriptor_));
@@ -342,7 +342,7 @@ void ImmutableServiceGenerator::GenerateStub(io::Printer* printer) {
       "  this.channel = channel;\n"
       "}\n"
       "\n"
-      "private final com.google.protobuf.RpcChannel channel;\n"
+      "private com.google.protobuf.RpcChannel channel;\n"
       "\n"
       "public com.google.protobuf.RpcChannel getChannel() {\n"
       "  return channel;\n"
@@ -411,7 +411,7 @@ void ImmutableServiceGenerator::GenerateBlockingStub(io::Printer* printer) {
       "  this.channel = channel;\n"
       "}\n"
       "\n"
-      "private final com.google.protobuf.BlockingRpcChannel channel;\n");
+      "private com.google.protobuf.BlockingRpcChannel channel;\n");
 
   for (int i = 0; i < descriptor_->method_count(); i++) {
     const MethodDescriptor* method = descriptor_->method(i);

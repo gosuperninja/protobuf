@@ -121,7 +121,7 @@ void ImmutableExtensionGenerator::Generate(io::Printer* printer) {
     // Non-nested
     printer->Print(
         vars,
-        "public static final\n"
+        "public static \n"
         "  com.google.protobuf.GeneratedMessage.GeneratedExtension<\n"
         "    $containing_type$,\n"
         "    $type$> $name$ = com.google.protobuf.GeneratedMessage\n"
@@ -132,7 +132,7 @@ void ImmutableExtensionGenerator::Generate(io::Printer* printer) {
     // Nested
     printer->Print(
         vars,
-        "public static final\n"
+        "public static \n"
         "  com.google.protobuf.GeneratedMessage.GeneratedExtension<\n"
         "    $containing_type$,\n"
         "    $type$> $name$ = com.google.protobuf.GeneratedMessage\n"

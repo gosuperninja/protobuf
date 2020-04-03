@@ -307,7 +307,7 @@ void ImmutableMessageGenerator::Generate(io::Printer* printer) {
   if (descriptor_->extension_range_count() > 0) {
     printer->Print(
         variables,
-        "$deprecation$public $static$final class $classname$ extends\n");
+        "$deprecation$public $static$ class $classname$ extends\n");
     printer->Annotate("classname", descriptor_);
     printer->Print(
         variables,
@@ -322,7 +322,7 @@ void ImmutableMessageGenerator::Generate(io::Printer* printer) {
   } else {
     printer->Print(
         variables,
-        "$deprecation$public $static$final class $classname$ extends\n");
+        "$deprecation$public $static$ class $classname$ extends\n");
     printer->Annotate("classname", descriptor_);
     printer->Print(variables,
                    "    com.google.protobuf.GeneratedMessage$ver$ implements\n"
@@ -364,7 +364,7 @@ void ImmutableMessageGenerator::Generate(io::Printer* printer) {
 
   printer->Print(
       "@java.lang.Override\n"
-      "public final com.google.protobuf.UnknownFieldSet\n"
+      "public com.google.protobuf.UnknownFieldSet\n"
       "getUnknownFields() {\n"
       "  return this.unknownFields;\n"
       "}\n");
@@ -799,7 +799,7 @@ void ImmutableMessageGenerator::GenerateDescriptorMethods(
     io::Printer* printer) {
   if (!descriptor_->options().no_standard_descriptor_accessor()) {
     printer->Print(
-        "public static final com.google.protobuf.Descriptors.Descriptor\n"
+        "public static com.google.protobuf.Descriptors.Descriptor\n"
         "    getDescriptor() {\n"
         "  return $fileclass$.internal_$identifier$_descriptor;\n"
         "}\n"
@@ -1302,7 +1302,7 @@ void ImmutableMessageGenerator::GenerateParsingConstructor(
 // ===================================================================
 void ImmutableMessageGenerator::GenerateParser(io::Printer* printer) {
   printer->Print(
-      "$visibility$ static final com.google.protobuf.Parser<$classname$>\n"
+      "$visibility$ static com.google.protobuf.Parser<$classname$>\n"
       "    PARSER = new com.google.protobuf.AbstractParser<$classname$>() {\n",
       "visibility",
       ExposePublicParser(descriptor_->file()) ? "@java.lang.Deprecated public"

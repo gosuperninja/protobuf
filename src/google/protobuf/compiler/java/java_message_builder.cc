@@ -84,7 +84,7 @@ void MessageBuilderGenerator::Generate(io::Printer* printer) {
   WriteMessageDocComment(printer, descriptor_);
   if (descriptor_->extension_range_count() > 0) {
     printer->Print(
-        "public static final class Builder extends\n"
+        "public static class Builder extends\n"
         "    com.google.protobuf.GeneratedMessage$ver$.ExtendableBuilder<\n"
         "      $classname$, Builder> implements\n"
         "    $extra_interfaces$\n"
@@ -94,7 +94,7 @@ void MessageBuilderGenerator::Generate(io::Printer* printer) {
         GeneratedCodeVersionSuffix());
   } else {
     printer->Print(
-        "public static final class Builder extends\n"
+        "public static class Builder extends\n"
         "    com.google.protobuf.GeneratedMessage$ver$.Builder<Builder> "
         "implements\n"
         "    $extra_interfaces$\n"
@@ -170,13 +170,13 @@ void MessageBuilderGenerator::Generate(io::Printer* printer) {
   printer->Print(
       "@java.lang.Override\n"
       "public final Builder setUnknownFields(\n"
-      "    final com.google.protobuf.UnknownFieldSet unknownFields) {\n"
+      "    com.google.protobuf.UnknownFieldSet unknownFields) {\n"
       "  return super.setUnknownFields(unknownFields);\n"
       "}\n"
       "\n"
       "@java.lang.Override\n"
       "public final Builder mergeUnknownFields(\n"
-      "    final com.google.protobuf.UnknownFieldSet unknownFields) {\n"
+      "    com.google.protobuf.UnknownFieldSet unknownFields) {\n"
       "  return super.mergeUnknownFields(unknownFields);\n"
       "}\n"
       "\n");
@@ -195,7 +195,7 @@ void MessageBuilderGenerator::Generate(io::Printer* printer) {
 void MessageBuilderGenerator::GenerateDescriptorMethods(io::Printer* printer) {
   if (!descriptor_->options().no_standard_descriptor_accessor()) {
     printer->Print(
-        "public static final com.google.protobuf.Descriptors.Descriptor\n"
+        "public static com.google.protobuf.Descriptors.Descriptor\n"
         "    getDescriptor() {\n"
         "  return $fileclass$.internal_$identifier$_descriptor;\n"
         "}\n"

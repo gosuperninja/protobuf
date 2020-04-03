@@ -76,7 +76,7 @@ void SetPrimitiveVariables(const FieldDescriptor* descriptor,
       WireFormat::TagSize(descriptor->number(), GetType(descriptor)));
   (*variables)["null_check"] =
       "  if (value == null) {\n"
-      "    throw new NullPointerException();\n"
+      "    return this;\n"
       "  }\n";
   (*variables)["writeString"] = "com.google.protobuf.GeneratedMessage" +
                                 GeneratedCodeVersionSuffix() + ".writeString";

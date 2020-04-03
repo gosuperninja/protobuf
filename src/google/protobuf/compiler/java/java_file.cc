@@ -269,7 +269,7 @@ void FileGenerator::Generate(io::Printer* printer) {
       printer, '$', options_.annotate_code ? classname_ + ".java.pb.meta" : "");
 
   printer->Print(
-      "$deprecation$public final class $classname$ {\n"
+      "$deprecation$public class $classname$ {\n"
       "  private $ctor$() {}\n",
       "deprecation",
       file_->options().deprecated() ? "@java.lang.Deprecated " : "",
@@ -392,7 +392,7 @@ void FileGenerator::GenerateDescriptorInitializationCodeForImmutable(
       "    getDescriptor() {\n"
       "  return descriptor;\n"
       "}\n"
-      "private static $final$ com.google.protobuf.Descriptors.FileDescriptor\n"
+      "private static com.google.protobuf.Descriptors.FileDescriptor\n"
       "    descriptor;\n"
       "static {\n",
       // TODO(dweis): Mark this as final.
