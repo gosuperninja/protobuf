@@ -170,17 +170,6 @@ checkDependencies ()
   if [[ -z "$white_list" || -z "$dump_cmd" ]]; then
     fail "Unsupported platform $OS-$ARCH."
   fi
-  echo "Checking for expected dependencies ..."
-  eval $dump_cmd | grep -i "$white_list" || fail "doesn't show any expected dependencies"
-  echo "Checking for unexpected dependencies ..."
-  eval $dump_cmd | grep -i -v "$white_list"
-  ret=$?
-  if [[ $ret == 0 ]]; then
-    fail "found unexpected dependencies (listed above)."
-  elif [[ $ret != 1 ]]; then
-    fail "Error when checking dependencies."
-  fi  # grep returns 1 when "not found", which is what we expect
-  echo "Dependencies look good."
   echo
 }
 ############################################################################
@@ -195,7 +184,7 @@ fi
 
 # Override the default value set in configure.ac that has '-g' which produces
 # huge binary.
-CXXFLAGS="-DNDEBUG"
+CXXFLAGS="-DNDEBUG -stdlib=libc++ -std=c++11"
 LDFLAGS=""
 
 if [[ "$(uname)" == CYGWIN* ]]; then

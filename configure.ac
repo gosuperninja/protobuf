@@ -172,7 +172,7 @@ AM_CONDITIONAL([HAVE_ZLIB], [test $HAVE_ZLIB = 1])
 
 # Add -std=c++11 if necesssary. It is important for us to do this before the
 # libatomic check below, since that also depends on C++11.
-AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory])
+# AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory])
 
 dnl On some platforms, std::atomic needs a helper library
 AC_MSG_CHECKING(whether -latomic is needed)
