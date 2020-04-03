@@ -184,8 +184,12 @@ fi
 
 # Override the default value set in configure.ac that has '-g' which produces
 # huge binary.
-CXXFLAGS="-DNDEBUG -stdlib=libc++ -std=c++11"
+
+CXXFLAGS="-DNDEBUG"
 LDFLAGS=""
+
+#OSX may need these flags
+#CXXFLAGS="-DNDEBUG -stdlib=libc++ -std=c++11"
 
 if [[ "$(uname)" == CYGWIN* ]]; then
   assertEq "$OS" windows $LINENO
